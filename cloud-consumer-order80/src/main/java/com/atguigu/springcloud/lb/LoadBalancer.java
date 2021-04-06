@@ -12,5 +12,8 @@ import org.springframework.cloud.client.ServiceInstance;
  */
 public interface LoadBalancer {
 
+    /**
+     * 收集服务实例
+     */
     ServiceInstance instances(List<ServiceInstance> serviceInstances);
 }
