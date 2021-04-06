@@ -1,8 +1,10 @@
 package com.atguigu.springcloud;
 
+import com.atguigu.myrule.MySelfRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
 /**
  * @author xiguozh
@@ -13,6 +15,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @SpringBootApplication
 @EnableEurekaClient
+//@RibbonClient(value = "CLOUD-PAYMENT-SERVICE", configuration = MySelfRule.class)
+// CLOUD-PAYMENT-SERVICE这个服务使用MySelfRule.class Ribbon机制，不使用默认的轮询
 public class OrderMain80 {
 
     public static void main(String[] args) {

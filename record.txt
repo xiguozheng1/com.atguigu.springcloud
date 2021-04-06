@@ -1,3 +1,5 @@
+-------------consul------------------
+
 consul agent -dev   启动
 http://localhost:8500
 
@@ -9,3 +11,14 @@ AP(Eureka)
 AP架构当网络分区出现后，为了保证可用性，系统B可以返回旧值，保证系统的可用性。结论：违背了一致性C的要求，只满足可用性和分区容错，即AP
 CP(Zookeeper/Consul)
 CP架构当网络分区出现后，为了保证一致性，就必须拒接请求，否则无法保证一致性结论：违背了可用性A的要求，只满足一致性和分区容错，即CP
+
+-------------Ribbon------------------
+com.netflix.loadbalancer.RandomRule     随机
+com.netflix.loadbalancer.RoundRobinRule 轮询
+com.netflix.loadbalancer.RetryRule      先按照RoundRobinRule的策略获取服务，如果获取服务失败则在指定时间内会进行重试，获取可用的服务
+WeightedResponseTimeRule                对RoundRobinRule的扩展，响应速度越快的实例选择权重越大，越容易被选择
+BestAvailableRule                       会先过滤掉由于多次访问故障而处于断路器跳闸状态的服务，然后选择一个并发量最小的服务
+AvailabilityFilteringRule               先过滤掉故障实例，再选择并发较小的实例
+ZoneAvoidanceRule                       默认规则,复合判断server所在区域的性能和server的可用性选择服务器
+
+负载均衡算法：rest接口第几次请求数 % 服务器集群总数量 = 实际调用服务器位置下标  ，每次服务重启动后rest接口计数从1开始。
