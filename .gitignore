@@ -1,3 +1,8 @@
-# Project exclude paths
-/cloud-consumer-order80/target/
-/cloud-provider-payment8001/target/
+#忽略所有.svn目录
+.svn/
+#忽略所有target目录
+target/
+#忽略所有.idea目录
+.idea/
+#忽略所有.iml文件
+*.iml
