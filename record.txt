@@ -1,3 +1,4 @@
+随笔
 -------------consul------------------
 consul agent -dev   启动
 http://localhost:8500
@@ -55,5 +56,19 @@ Hystrix是一个用于处理分布式系统的延迟和容错的开源库，具�
     1.服务的降级->进而熔断->恢复调用链路
     类比保险丝达到最大服务访问后，直接拒绝访问，拉闸限电，然后调用服务降级的方法并返回友好提示
 服务限流
-    1.秒杀高并发等操作，严禁一窝蜂的过来拥挤，大家排队，一秒钟N个，有序进行
+    秒杀高并发等操作，严禁一窝蜂的过来拥挤，大家排队，一秒钟N个，有序进行
 接近实时的监控
+**********核心注解**********
+@EnableHystrix 启动类表示使用Hystrix
+@HystrixCommand
+    使用在方法上，2种意义
+    1.一旦调用服务方法失败并抛出了错误信息后，会自动调用@HystrixCommand标注好的 fallbackMethod调用类中的指定方法
+    2.只有@HystrixCommand注解没有具体的fallback方法，表示使用该类的统一fallback方法
+@DefaultProperties(defaultFallback = "") 表示该类的统一fallback方法
+
+feign:
+  hystrix:
+    enabled: true
+    # 在feign中开启Hystrix
+@FeignClient(value = "服务端名", fallback = PaymentFallbackService.class)
+feign和Hystrix配合使用
