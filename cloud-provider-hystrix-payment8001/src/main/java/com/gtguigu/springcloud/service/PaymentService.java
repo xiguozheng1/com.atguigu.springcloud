@@ -48,7 +48,8 @@ public class PaymentService {
         if (id < 0) {
             throw new RuntimeException("******id 不能负数");
         }
-        String serialNumber = IdUtil.simpleUUID();//和UUID.randomUUID().toString()一样
+        //和UUID.randomUUID().toString()作用一样
+        String serialNumber = IdUtil.simpleUUID();
         return Thread.currentThread().getName() + "\t" + "调用成功，流水号: " + serialNumber;
     }
     public String paymentCircuitBreaker_fallback(@PathVariable("id") Integer id) {
