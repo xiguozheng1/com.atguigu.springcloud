@@ -95,8 +95,9 @@ Spring Cloud Gateway的目标提供统一的路由方式且基于 Filter 链的�
 **********gateway工作流程**********
 核心逻辑-----路由转发+执行过滤器链
 断言----Predicate就是为了实现一组匹配规则，让请求过来找到对应的Route进行处理
-
-
+过滤器--Filter---主要自定义过滤器-----implement GlobalFilter,Ordered
+能干什么
+    1全局日志记录     2统一网关鉴权     等
 
 
 
