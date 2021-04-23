@@ -18,10 +18,12 @@ public class GateWayConfig {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder routeLocatorBuilder){
         RouteLocatorBuilder.Builder routes = routeLocatorBuilder.routes();
+        double a = 123D;
+        float b = 12313F;
+        b = (float) a;
         routes.route("payment_routh_1",
             r -> r.path("/guonei")
                 .uri("http://news.baidu.com/guonei")).build();
         return routes.build();
     }
-//    http://news.baidu.com/guonei
 }
