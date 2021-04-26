@@ -103,7 +103,10 @@ Config（手动动态刷新）动态刷新
     修改YML，暴露监控端口
     @RefreshScope业务类Controller修改
     post请求触发    curl -X POST "http://localhost:3355/actuator/refresh"
-
+---------------------------spring cloud bus---------------------------------------------------------------------
+2大核心功能
+1.动态刷新全局广播
+2.动态刷新定点通知
 
 
 
